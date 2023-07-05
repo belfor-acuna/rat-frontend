@@ -60,6 +60,7 @@ export default {
     async getMeNavbar() {
       const user = await getMe();
       this.user = user;
+      console.log(user);
     },
   },
   data() {
