@@ -1,5 +1,4 @@
 <template>
-    <navbar/>
      <div class="container mt-5">
         <div class="row">
             <div class="col-xl-5 col-lg-6 mt-xl-3 mt-2" style="background-image: url(/static/images/background2.png);">
@@ -31,12 +30,8 @@
       </div>
 </template>
 <script>
-import Navbar from '../components/Navbar.vue';
 export default{
-    name:"HomeView",
-  components:{
-    Navbar,
-  }
+    name:"HomeView"
 }
 </script>
 <style scoped>

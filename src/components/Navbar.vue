@@ -1,49 +1,76 @@
 <template>
-        <div id="mainNavigation">
-            <nav role="navigation">
-              <div class="py-3 text-center border-bottom">
-                <img src="../assets/logo.png" width="150">
-              </div>
-            </nav>
-            <div class="navbar-expand-md">
-              <div class="navbar-dark text-center my-2">
-                <button class="navbar-toggler w-75 bg-primary bg-opacity-10 text-black" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span> <span class="align-middle">Menu</span>
-                </button>
-              </div>
-              <div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="home-page.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link"   @click="navigateTo('register')">Register</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link"  @click="navigateTo('login')">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" @click="navigateTo('account')">Account</a>
-                </li>
-          </ul>
-        </div>
+  <div id="mainNavigation">
+    <nav role="navigation">
+      <div class="py-3 text-center border-bottom">
+        <img src="../assets/logo.png" width="150" />
       </div>
-        </div>
+    </nav>
+    <div class="navbar-expand-md">
+      <div class="navbar-dark text-center my-2">
+        <button
+          class="navbar-toggler w-75 bg-primary bg-opacity-10 text-black"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+          <span class="align-middle">Menu</span>
+        </button>
+      </div>
+      <div
+        class="text-center mt-3 collapse navbar-collapse"
+        id="navbarNavDropdown"
+      >
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="home-page.html"
+              >Home</a
+            >
+          </li>
+          
+            <li v-if="!user" class="nav-item">
+              <a class="nav-link" @click="navigateTo('register')">Register</a>
+            </li>
+            <li v-if="!user" class="nav-item">
+              <a class="nav-link" @click="navigateTo('login')">Login</a>
+            </li>
+        
+
+          <li class="nav-item">
+            <a class="nav-link" @click="navigateTo('account')">Account</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
+import { getMe } from "@/services/auth.service";
 export default {
-    name:"NavBar",
-    methods:{
-        navigateTo(route){
-            this.$router.push({
-                name:route
-            })
-        }
-    }
-}
+  name: "NavBar",
+  methods: {
+    navigateTo(route) {
+      this.$router.push({
+        name: route,
+      });
+    },
+    async getMeNavbar() {
+      const user = await getMe();
+      this.user = user;
+    },
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+  async mounted() {},
+};
 </script>
 <style scoped>
-
 #mainNavigation a {
   font-size: 14px;
   letter-spacing: 2px;
@@ -74,11 +101,23 @@ a.dropdown-item:hover {
   left: 0;
   width: 100%;
   z-index: 123;
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%); 
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 100%);
-  background: linear-gradient(to bottom,  rgba(0, 0, 0, 0.2) 0%,rgba(0,0,0,0) 100%); 
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); 
-  }
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+}
 #navbarNavDropdown.collapsing .navbar-nav,
 #navbarNavDropdown.show .navbar-nav {
   background: #037582;

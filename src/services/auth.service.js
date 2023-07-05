@@ -1,7 +1,8 @@
 import axios from "axios";
 import {getToken, removeToken, setToken} from "./helpers"
-const axiosInstance= axios.create({baseURL:BASE_URL});
 const BASE_URL = 'http://localhost:3500/auth';
+const axiosInstance= axios.create({baseURL:BASE_URL});
+
 const token = getToken();
 if(token){
 	setToken(token);
