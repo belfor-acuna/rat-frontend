@@ -9,7 +9,7 @@
                     </a>
                 </div>
             </div>
-            <form @submit.prevent="login" class="form" id="login-form">
+            <form @submit.prevent="onSubmit" class="form" id="login-form">
                 <div class="container">
                     <div class="row mt-5">
                         <input v-model="email" class="form-control-lg bg-secondary rounded-pill" id="email" name="email" type="text" placeholder="Email"  required minlength="2">
@@ -33,26 +33,48 @@
 </template>
 <script>
 import {login} from '@/services/auth.service.js';
+import {setToken} from '@/services/helpers.js';
+import {ref} from 'vue';
+import {useRouter} from "vue-router";
 
 export default {
     name:"LoginView",
-    data(){
-      return {
-        email: '',
-        password: ''
-      };
+    mounted(){
+        this.onLoginError();
     },
-    methods:{
-      async login(){
-        try{
-          const response = await login({email: this.email, password: this.password});
-          console.log(response);
-        }catch(error){
-          console.error(error);
-        }
-      }
-    }
-}
+    setup(){
+        const router = useRouter();
+
+        const email = ref(null);
+        const password = ref(null);
+
+        return{
+            email,
+            password,
+
+            async onSubmit(){
+                const response = await login({
+                    email: email.value,
+                    password: password.value,
+                });
+
+                if(response.error){
+                    console.error(response.error);
+                }else{
+                    console.log(response);
+                }
+
+                setToken(response.token);
+
+                await router.push({name: "Account"});
+            },
+
+            onLoginError(){
+                console.error("Credentials missing.");
+            }
+        };
+    },
+};
 </script>
 <style scoped>
 
