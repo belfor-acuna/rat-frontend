@@ -59,14 +59,14 @@ export default {
                 });
 
                 if(response.error){
-                    console.error(response.error);
+                    return console.error(response.error);
                 }else{
                     console.log(response);
                 }
 
                 setToken(response.token);
 
-                await router.push({name: "Account"});
+                await router.push({name: 'home'});
             },
 
             onLoginError(){
