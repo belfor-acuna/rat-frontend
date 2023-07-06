@@ -37,7 +37,7 @@
             <li v-if="!user" class="nav-item">
               <a class="nav-link" @click="navigateTo('login')">Login</a>
             </li>
-        
+            {{user}}
 
           <li class="nav-item">
             <a class="nav-link" @click="navigateTo('account')">Account</a>
@@ -60,15 +60,19 @@ export default {
     async getMeNavbar() {
       const user = await getMe();
       this.user = user;
-      console.log(user);
-    },
+      if(user.error){
+        this.user = null;
+      }
+},
   },
   data() {
     return {
       user: null,
     };
   },
-  async mounted() {},
+  async mounted() {
+    this.getMeNavbar();
+  },
 };
 </script>
 <style scoped>
