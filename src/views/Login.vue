@@ -9,13 +9,13 @@
                     </a>
                 </div>
             </div>
-            <form action="home-page.html" class="form" method="get" id="login-form">
+            <form @submit.prevent="login" class="form" id="login-form">
                 <div class="container">
                     <div class="row mt-5">
-                        <input class="form-control-lg bg-secondary rounded-pill" id="username" name="username" type="text" placeholder="Username"  required minlength="2">
+                        <input v-model="email" class="form-control-lg bg-secondary rounded-pill" id="email" name="email" type="text" placeholder="Email"  required minlength="2">
                     </div>
                     <div class="row mt-4">
-                        <input class="form-control-lg mt-2 bg-secondary rounded-pill" id="password" name="password" type="password" placeholder="Password" required minlength="8">
+                        <input v-model="password" class="form-control-lg mt-2 bg-secondary rounded-pill" id="password" name="password" type="password" placeholder="Password" required minlength="8">
                     </div>
                       <div class="row mt-5">
                         <div class="col-md-4 d-flex justify-content-center"><a href="home-page.html" class="btn text-decoration-none rounded-pill"> Inicio</a></div>
@@ -32,8 +32,26 @@
     </div>
 </template>
 <script>
+import {login} from '@/services/auth.service.js';
+
 export default {
-    name:"LoginView"
+    name:"LoginView",
+    data(){
+      return {
+        email: '',
+        password: ''
+      };
+    },
+    methods:{
+      async login(){
+        try{
+          const response = await login({email: this.email, password: this.password});
+          console.log(response);
+        }catch(error){
+          console.error(error);
+        }
+      }
+    }
 }
 </script>
 <style scoped>
