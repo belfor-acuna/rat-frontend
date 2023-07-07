@@ -12,20 +12,7 @@
                 </p>
               </div>
           </div>
-          <div class="col-xl-7 col-lg-6" style="background-image: url(/static/images/background2.png);">
-            <div id="template-carousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#template-carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-black bg-opacity-25" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#template-carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-black bg-opacity-25" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
+          
         </div>
       </div>
 </template>

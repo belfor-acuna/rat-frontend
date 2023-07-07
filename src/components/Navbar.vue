@@ -35,6 +35,9 @@
           <li v-if="user && user.user.roles[0] === 'Admin'" class="nav-item">
             <a class="nav-link" @click="navigateTo('admin-users')" style="cursor:pointer">View Users </a>
           </li>
+          <li v-if="user" class="nav-item">
+            <a class="nav-link" @click="logout()" style="cursor:pointer">Logout</a>
+          </li>
           
         </ul>
       </div>

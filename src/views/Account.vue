@@ -33,7 +33,6 @@
         </ul>
         <h2>Proficiencies:</h2>
         <ul>
-          
         </ul>
         <h2>Job Experience:</h2>
         <ul>
