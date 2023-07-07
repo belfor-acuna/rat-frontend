@@ -33,10 +33,7 @@
         </ul>
         <h2>Proficiencies:</h2>
         <ul>
-          <li v-for="(proficiency, index) in user.user.proficiencies" :key="index">
-            <strong>Name:</strong> {{procifiency[0]}}<br>
-            <strong>Description:</strong> {{proficiency[1]}}<br>
-          </li>
+          
         </ul>
         <h2>Job Experience:</h2>
         <ul>
