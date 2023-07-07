@@ -37,10 +37,14 @@
             <li v-if="!user" class="nav-item">
               <a class="nav-link" @click="navigateTo('login')">Login</a>
             </li>
-
-          <li v-else class="nav-item">
+            
+          <li v-if="user && user.user.roles[0] === 'User'" class="nav-item">
             <a class="nav-link" @click="navigateTo('account')" style="cursor:pointer">{{user.user.username}} </a>
           </li>
+          <li v-if="user && user.user.roles[0] === 'Admin'" class="nav-item">
+            <a class="nav-link" @click="navigateTo('admin-users')" style="cursor:pointer">View Users </a>
+          </li>
+          
         </ul>
       </div>
     </div>

@@ -4,7 +4,8 @@ import Landing from './views/Landing';
 import Login from './views/Login';
 import Home from './views/Home.vue';
 import Register from './views/Register.vue';
-import CreateResume from './views/CreateResume.vue'
+import CreateResume from './views/CreateResume.vue';
+import Admin from './views/Admin.vue'
 const routes=[
     {
         path:"/",
@@ -30,6 +31,11 @@ const routes=[
         path:"/createResume",
         name:"createResume",
         component: CreateResume
+    },
+    {
+        path:"/admin/users",
+        name:"admin-users",
+        component:Admin
     }
 
 ];
