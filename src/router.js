@@ -4,6 +4,7 @@ import Landing from './views/Landing';
 import Login from './views/Login';
 import Home from './views/Home.vue';
 import Register from './views/Register.vue';
+import Account from './views/Account.vue';
 
 const routes=[
     {
@@ -26,6 +27,11 @@ const routes=[
         name:"register",
         component:Register
     },
+    {
+      path:"/account",
+      name:"account",
+      component: Account
+    }
 
 ];
 
