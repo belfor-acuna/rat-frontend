@@ -6,6 +6,10 @@ import Home from './views/Home.vue';
 import Register from './views/Register.vue';
 import CreateResume from './views/CreateResume.vue';
 import Admin from './views/Admin.vue'
+import Account from './views/Account.vue';
+import Panel from './views/UserPanel.vue';
+import Resumes from './views/Resumes.vue';
+
 const routes=[
     {
         path:"/",
@@ -36,6 +40,21 @@ const routes=[
         path:"/admin/users",
         name:"admin-users",
         component:Admin
+    },
+    {
+      path:"/account",
+      name:"account",
+      component: Account
+    },
+    {
+        path:"/panel",
+        name:"panel",
+        component: Panel
+    },
+    {
+      path:"/resumes",
+      name:"resumes",
+      component: Resumes
     }
 
 ];
