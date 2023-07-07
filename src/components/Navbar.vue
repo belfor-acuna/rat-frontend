@@ -71,7 +71,7 @@ export default {
   },
   async mounted() {
     await this.getMeNavbar();
-  },
+  }
 };
 </script>
 <style scoped>

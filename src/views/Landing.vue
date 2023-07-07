@@ -13,14 +13,17 @@
                     <div
                         class="h-100 p-2 text-white bg-primary border rounded-3">
                         <p class="">Enter your information and browse through the variety of designs we have for you!</p>
-                        <button class="btn btn-outline-dark" @click="navigateTo('register')">Sign Up</button>
+                        <button class="btn btn-outline-dark" @click="navigateTo('register')" v-if="!user">Sign Up</button>
+                        <button class="btn btn-outline-dark" @click="navigateTo('home')" v-else >Home</button>
+
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div
                         class="h-100 p-2 bg-primary border rounded-3">
                         <p class="text-light">Just choose a template and start working!</p>
-                        <button class="btn btn-outline-dark mt-4" @click="navigateTo('login')">Login</button>
+                        <button class="btn btn-outline-dark mt-4" @click="navigateTo('login')" v-if="!user">Login</button>
+                        <button class="btn btn-outline-dark mt-4" @click="navigateTo('account')" v-else>Account</button>
                     </div>
                 </div>
             </div>
@@ -34,6 +37,7 @@
     </div>
 </template>
 <script>
+import { getMe } from '../services/auth.service.js';
 export default{
     name:"LandingView",
     methods:{
@@ -41,7 +45,21 @@ export default{
             this.$router.push({
                 name:route
             })
+        },
+        async getMeLanding(){
+            const user = await getMe();
+            this.user = user;
+            if(user.error){
+        this.user = null;
         }
+    },data(){
+        return{
+            user:null
+        }
+    }
+},
+    async mounted(){
+        await this.getMeLanding();
     }
 }
 </script>

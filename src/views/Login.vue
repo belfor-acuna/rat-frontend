@@ -4,7 +4,7 @@
         <div class="col-xl-4 col-lg-8 mt-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-12 col-sm-8 d-flex justify-content-center">
-                    <a href="home-page.html">
+                    <a @click="navigateTo('home')" style="cursor:pointer">
                         <img src="../assets/logo.png" class="mt-5 w-100" alt="">
                     </a>
                 </div>
@@ -18,8 +18,8 @@
                         <input v-model="password" class="form-control-lg mt-2 bg-secondary rounded-pill" id="password" name="password" type="password" placeholder="Password" required minlength="8">
                     </div>
                       <div class="row mt-5">
-                        <div class="col-md-4 d-flex justify-content-center"><a href="home-page.html" class="btn text-decoration-none rounded-pill"> Inicio</a></div>
-                        <div class="col-md-4 d-flex justify-content-center"><a href="register-page.html" class="btn text-decoration-none rounded-pill"> Sign up</a></div>
+                        <div class="col-md-4 d-flex justify-content-center"><a @click="navigateTo('home')" class="btn text-decoration-none rounded-pill"> Inicio</a></div>
+                        <div class="col-md-4 d-flex justify-content-center"><a @click="navigateTo('register')" class="btn text-decoration-none rounded-pill"> Sign up</a></div>
                         <div class="col-md-4 d-flex justify-content-center"><button class="btn text-white rounded-pill" type="submit" style="background-color: rgb(37, 150, 190);">  Login </button>
                         </div>
                     </div>
@@ -39,6 +39,13 @@ import {useRouter} from "vue-router";
 
 export default {
     name:"LoginView",
+    methods:{
+        navigateTo(route) {
+      this.$router.push({
+        name: route,
+      });
+    }
+    },
     mounted(){
         this.onLoginError();
     },
