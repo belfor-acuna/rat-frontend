@@ -4,7 +4,7 @@ import Landing from './views/Landing';
 import Login from './views/Login';
 import Home from './views/Home.vue';
 import Register from './views/Register.vue';
-
+import CreateResume from './views/CreateResume.vue'
 const routes=[
     {
         path:"/",
@@ -26,6 +26,11 @@ const routes=[
         name:"register",
         component:Register
     },
+    {
+        path:"/createResume",
+        name:"createResume",
+        component: CreateResume
+    }
 
 ];
 

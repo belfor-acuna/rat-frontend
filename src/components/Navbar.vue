@@ -26,7 +26,7 @@
       >
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="home-page.html"
+            <a class="nav-link" aria-current="page" @click="navigateTo('home')"
               >Home</a
             >
           </li>

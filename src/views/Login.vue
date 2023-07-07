@@ -63,7 +63,6 @@ export default {
                 }else{
                     console.log(response);
                 }
-
                 setToken(response.token);
                 await router.push({name: 'home'});
             },
