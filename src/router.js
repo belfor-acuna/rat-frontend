@@ -5,6 +5,7 @@ import Login from './views/Login';
 import Home from './views/Home.vue';
 import Register from './views/Register.vue';
 import Account from './views/Account.vue';
+import Panel from './views/UserPanel.vue';
 
 const routes=[
     {
@@ -31,6 +32,11 @@ const routes=[
       path:"/account",
       name:"account",
       component: Account
+    },
+    {
+        path:"/panel",
+        name:"panel",
+        component: Panel
     }
 
 ];
