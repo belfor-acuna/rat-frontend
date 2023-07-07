@@ -37,10 +37,9 @@
             <li v-if="!user" class="nav-item">
               <a class="nav-link" @click="navigateTo('login')">Login</a>
             </li>
-            {{user}}
 
-          <li class="nav-item">
-            <a class="nav-link" @click="navigateTo('account')">Account</a>
+          <li v-else class="nav-item">
+            <a class="nav-link" @click="navigateTo('account')" style="cursor:pointer">{{user.user.username}} </a>
           </li>
         </ul>
       </div>
@@ -71,7 +70,7 @@ export default {
     };
   },
   async mounted() {
-    this.getMeNavbar();
+    await this.getMeNavbar();
   },
 };
 </script>

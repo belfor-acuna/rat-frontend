@@ -33,6 +33,7 @@
 export default{
     name:"HomeView"
 }
+
 </script>
 <style scoped>
 body {
