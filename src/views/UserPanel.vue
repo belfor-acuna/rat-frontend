@@ -181,6 +181,7 @@ export default {
         password: formData.password
       });
       this.user = result.user;
+      this.navigateTo('account');
     }
   },
   async mounted(){
