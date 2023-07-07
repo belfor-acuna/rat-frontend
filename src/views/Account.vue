@@ -46,6 +46,7 @@
             <strong>Description:</strong> {{job[2]}}<br>
           </li>
         </ul>
+        <a @click="navigateTo('panel')" style="cursor:pointer">Editar</a>
       </div>
     </body>
     </html>

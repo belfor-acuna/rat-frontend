@@ -6,6 +6,7 @@ import Home from './views/Home.vue';
 import Register from './views/Register.vue';
 import Account from './views/Account.vue';
 import Panel from './views/UserPanel.vue';
+import Resumes from './views/Resumes.vue';
 
 const routes=[
     {
@@ -37,6 +38,11 @@ const routes=[
         path:"/panel",
         name:"panel",
         component: Panel
+    },
+    {
+      path:"/resumes",
+      name:"resumes",
+      component: Resumes
     }
 
 ];
