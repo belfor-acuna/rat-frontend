@@ -4,7 +4,7 @@
         <div class="col-xl-4 col-lg-8 mt-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-12 col-sm-8 d-flex justify-content-center">
-                    <a href="home-page.html">
+                    <a @click="navigateTo('home')" style="cursor:pointer">
                         <img src="../assets/logo.png" class="mt-5 w-100" alt="">
                     </a>
                 </div>
@@ -40,9 +40,11 @@ import {useRouter} from "vue-router";
 export default {
     name:"LoginView",
     methods:{
-        navigateTo(route){
-            this.$router.push({name: route});
-        },
+        navigateTo(route) {
+      this.$router.push({
+        name: route,
+      });
+    }
     },
     mounted(){
         this.onLoginError();
@@ -68,7 +70,6 @@ export default {
                 }else{
                     console.log(response);
                 }
-
                 setToken(response.token);
                 await router.push({name: 'home'});
             },

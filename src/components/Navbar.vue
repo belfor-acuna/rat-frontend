@@ -17,7 +17,9 @@
       <div class="text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="home-page.html">Home</a>
+            <a class="nav-link" aria-current="page" @click="navigateTo('home')"
+              >Home</a
+            >
           </li>
 
           <li v-if="!user" class="nav-item">
@@ -69,7 +71,7 @@ export default {
   },
   async mounted() {
     await this.getMeNavbar();
-  },
+  }
 };
 </script>
 <style scoped>

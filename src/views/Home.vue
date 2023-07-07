@@ -8,7 +8,7 @@
                 <hr class="my-2">
                 <p class="text-muted">Create your own resume in less than fifteen minutes and go get your dream job</p>
                 <p class="lead">
-                  <a class="btn btn-primary btn-lg" href="https://www.youtube.com/watch?v=mCdA4bJAGGk" role="button">Click me!</a>
+                  <a class="btn btn-primary btn-lg" @click="navigateTo('createResume')" role="button">Click me!</a>
                 </p>
               </div>
           </div>
@@ -30,8 +30,31 @@
       </div>
 </template>
 <script>
+import { getMe } from '@/services/auth.service';
 export default{
-    name:"HomeView"
+    name:"HomeView",
+    methods:{
+      navigateTo(route) {
+      this.$router.push({
+        name: route,
+      })
+    },
+    async getMeHome() {
+      const user = await getMe();
+      this.user = user;
+      if(user.error){
+        this.user = null;
+      }
+    }
+    },
+    data(){
+      return{
+        user:null
+      }
+    },
+    async mounted(){
+      this.getMeHome();
+    }
 }
 
 </script>
