@@ -10,13 +10,13 @@
 
                 <div class="row w-100 py-2 fw-bold">
                     <div class="col-md-6 ">
-                        <div class="h-100 p-2 text-white bg-primary border rounded-3">
+                        <div v-if="!user" class="h-100 p-2 text-white bg-primary border rounded-3">
                             <p class="">Enter your information and browse through the variety of designs we have for you!
                             </p>
                             <button class="btn btn-outline-dark" @click="navigateTo('register')">Sign Up</button>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div v-if="!user" class="col-md-6">
                         <div class="h-100 p-2 bg-primary border rounded-3">
                             <p class="text-light">Just choose a template and start working!</p>
                             <button class="btn btn-outline-dark mt-4" @click="navigateTo('login')">Login</button>
@@ -33,14 +33,31 @@
     </div>
 </template>
 <script>
+import { getMe } from "@/services/auth.service";
+
 export default {
     name: "LandingView",
+    data() {
+        return {
+            user: null,
+        };
+    },
     methods: {
         navigateTo(route) {
             this.$router.push({
                 name: route
             })
-        }
-    }
+        },
+        async getMeLanding() {
+            const user = await getMe();
+            this.user = user;
+            if (user.error) {
+                this.user = null;
+            }
+        },
+    },
+    mounted() {
+        this.getMeLanding();
+    },
 }
 </script>

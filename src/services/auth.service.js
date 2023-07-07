@@ -47,6 +47,17 @@ export function login({ email, password }) {
 		}));
 }
 
+export function logout() {
+	return axiosInstance
+		.post(`${BASE_URL}/logout`)
+		.then((response) => response.data)
+		.catch((error) => ({
+			error: true,
+			name: error.response.data?.error?.name || "Error",
+			message: error.response.data?.error?.msg || "Error",
+		}));
+}
+
 
 
 

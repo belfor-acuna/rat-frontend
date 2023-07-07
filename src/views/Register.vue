@@ -24,7 +24,7 @@
               type="email" placeholder="Email" required>
           </div>
           <div class="row mt-5">
-            <div class="col-md-6 d-flex justify-content-center"><a href="home-page.html"
+            <div class="col-md-6 d-flex justify-content-center"><a @click="navigateTo('home')"
                 class="btn text-decoration-none rounded-pill"> Inicio</a></div>
             <div class="col-md-6 d-flex justify-content-center"><button class="btn text-white rounded-pill" type="submit"
                 style="background-color: rgb(37, 150, 190);"> Sign up </button>
@@ -44,6 +44,11 @@ import { useRouter } from 'vue-router';
 
 export default {
   name: 'RegisterView',
+  methods: {
+    navigateTo(route) {
+      this.$router.push({ name: route });
+    },
+  },
   setup() {
     const router = useRouter();
 
