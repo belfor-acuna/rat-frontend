@@ -41,9 +41,8 @@ export default {
         this.admin = null;
       }
        const result = await getUsers({adminId:this.admin.user._id});
-       this.users = result.users;
-       console.log(this.users[0]._id);
-       console.log(this.users)
+       this.users = JSON.stringify(result.users);
+       console.log(this.users);
     }
     
   },
